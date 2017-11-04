@@ -1,11 +1,13 @@
 <template lang="pug">
-  .hello
-    .hu {{msg}}
+  .footer
+    .container
+      .content.has-text-centered
+        p Copyright © 2017 國立臺灣大學學生會. All rights reserved.
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'TemplateFooter',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -16,6 +18,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-.hu
-  color: redaa
+@import "../../node_modules/bulma/bulma.sass"
+
 </style>

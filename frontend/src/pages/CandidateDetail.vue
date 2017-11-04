@@ -1,6 +1,6 @@
 <template lang="pug">
   TemplateTN
-    .test hi
+    .reee {{detail.name}}
 </template>
 
 <script>
@@ -8,20 +8,17 @@
 import TemplateTN from '@/templates/TemplateTN'
 
 export default {
-  name: 'Landing',
+  name: 'CandidateDetail',
   components: {
     TemplateTN
   },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  props: {
+    detail: Object
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-.hu
-  color: red
+  @import "../../node_modules/bulma/bulma.sass"
 </style>
