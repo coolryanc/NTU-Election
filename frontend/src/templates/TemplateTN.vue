@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  #main
     nav.navbar(role="navigation" aria-label="main navigation")
       .navbar-brand
         router-link.navbar-item(to="/") 台大校長選舉
@@ -8,7 +8,7 @@
       .navbar-menu
         .navbar-start
           router-link.navbar-item(to="/candidate") 候選人
-          a.navbar-item 訪問
+          router-link.navbar-item(to="/interview") 訪問
           a.navbar-item 投票去
     section.section
       .container
@@ -45,7 +45,8 @@ a
   text-decoration: none
 
 .container
-  min-height: 720px
-  // background-color: #783122
+  min-height: 100vh
 
+#main
+  height: 100%
 </style>

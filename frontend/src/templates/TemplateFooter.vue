@@ -19,5 +19,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
-
 </style>

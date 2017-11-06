@@ -1,25 +1,26 @@
 <template lang="pug">
   TemplateTN
-    .modal(v-if="get_person_info" @click="showMore()" :class="isClick")
-      .modal-background
-      .modal-content
-        .box
-          .media
-            .media-left
-              figure.image.is-96x96
-                img(:src="get_person_info.image")
-            .media-content
-              .content
-                p
-                  strong.title.is-4 {{get_person_info.name}}
-                  small  @{{get_person_info.e_name}}
-                .tag.is-primary 現職
-                li(v-for="i in get_person_info.position") {{i}}
-                .tag.is-primary 學歷
-                li(v-for="i in get_person_info.education") {{i}}
-                .tag.is-primary 經歷
-                li(v-for="i in get_person_info.experience") {{i}}
-      button.modal-close.is-large
+    transition(name="fade")
+      .modal(v-if="isClick" @click="showMore()" :class="isClick")
+        .modal-background
+        .modal-content
+          .box
+            .media
+              .media-left
+                figure.image.is-96x96
+                  img(:src="get_person_info.image")
+              .media-content
+                .content
+                  p
+                    strong.title.is-4 {{get_person_info.name}}
+                    small  @{{get_person_info.e_name}}
+                  .tag.is-primary 現職
+                  li(v-for="i in get_person_info.position") {{i}}
+                  .tag.is-primary 學歷
+                  li(v-for="i in get_person_info.education") {{i}}
+                  .tag.is-primary 經歷
+                  li(v-for="i in get_person_info.experience") {{i}}
+        button.modal-close.is-large
     .columns(v-for="(array, row) in candidates")
       PersonCube(v-for="(item, col) in array" :person_info="item" :key="col" @click.native="showMore(row, col)")
 </template>
@@ -63,7 +64,6 @@ export default {
       this.candidates = returnArray
     },
     showMore (row = -1, col = -1) {
-      console.log(row, col)
       if (this.isClick) {
         document.querySelector('html').classList.remove('is-clipped')
         this.isClick = ''
@@ -81,7 +81,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-  @import "../../node_modules/bulma/bulma.sass"
-  .tag
-    margin-top: 16px
+@import "../../node_modules/bulma/bulma.sass"
+
+.fade-enter-active
+  animation: show .4s 1
+
+.fade-leave-active
+  animation: show .4s reverse
+
+.tag
+  margin-top: 16px
+
+@keyframes show
+  0%
+    opacity: 0.3
+    transform: translateY(-5px)
+  100%
+    opacity: 1
+    transform: translateY(0px)
 </style>

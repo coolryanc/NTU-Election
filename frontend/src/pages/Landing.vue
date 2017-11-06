@@ -14,7 +14,6 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
@@ -22,6 +21,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-.hu
-  color: red
+  @import "../../node_modules/bulma/bulma.sass"
 </style>
