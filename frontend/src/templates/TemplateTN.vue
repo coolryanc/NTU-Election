@@ -7,10 +7,7 @@
           span(v-for="i in 3")
       .navbar-menu
         .navbar-start
-          .navbar-item.has-dropdown.is-hoverable
-            router-link.navbar-link(to="/candidate") 候選人
-            .navbar-dropdown
-              router-link.navbar-item(v-for="item in candidates" :to="{name: 'candidate_detail', params:{detail: item}}" :key="item.name") {{item.name}}
+          router-link.navbar-item(to="/candidate") 候選人
           a.navbar-item 訪問
           a.navbar-item 投票去
     section.section
@@ -30,15 +27,7 @@ export default {
   },
   data () {
     return {
-      candidates: null
     }
-  },
-  mounted () {
-    this.$http.get('http://localhost:5000/candidates').then((response) => {
-      this.candidates = response.body.candidates
-    }, (response) => {
-      console.log('Error')
-    })
   }
 }
 </script>

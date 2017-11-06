@@ -2,10 +2,18 @@
   router-link.column(:to="{name: 'candidate_detail', params:{detail: person_info}}")
     .card
       .card-image
-        figure.image.is-1by1
-          img.circle(:src="person_info.image" :alt="person_info.name")
+        figure.image.is-4by3
+          img(:src="person_info.image" :alt="person_info.name")
       .card-content
-        .content {{person_info.name}}
+        .media
+          .media-content
+            p.title.is-4 {{person_info.name}}
+            p.subtitle.is-6 @{{person_info.e_name}}
+        .content
+          p.menu-label 現職
+          .media(v-for="(p, index) in person_info.position")
+            .media-left {{index+1}}.
+            .media-content {{p}}
 </template>
 
 <script>
@@ -28,11 +36,31 @@ export default {
 .card
   cursor: pointer
   transition: .2s
+  animation: rise .5s 1
   &:hover
     transform: translate(-3px, -3px)
     box-shadow: 2px 2px 8px 1px rgba(black, 0.2)
 
-.circle
-  border-radius: 100%
+.is-narrow
+  padding-right: 0
+
+.subtitle
+  color: rgba(0, 0, 0, 0.4)
+
+.content
+  min-height: 200px
+
+p.menu-label
+  display: inline-block
+  padding: 2px 0
+  border-bottom: solid 3px $primary
+
+@keyframes rise
+  0%
+    opacity: 0
+    transform: translateY(5px)
+  100%
+    opacity: 1
+    transform: translateY(0px)
 
 </style>
