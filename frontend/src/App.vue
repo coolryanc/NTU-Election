@@ -10,13 +10,14 @@ export default {
 </script>
 
 <style lang="sass">
-html, body
-  width: 100%
-  height: 100%
-  margin: 0
-  padding: 0
+  @import "../node_modules/bulma/bulma.sass"
+  html, body
+    width: 100%
+    height: 100%
+    margin: 0
+    padding: 0
 
-#app
-  width: 100%
-  height: 100%
+  #app
+    width: 100%
+    height: 100%
 </style>

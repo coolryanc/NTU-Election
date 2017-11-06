@@ -1,5 +1,5 @@
 <template lang="pug">
-  router-link.column(:to="{name: 'candidate_detail', params:{detail: person_info}}")
+  .column
     .card
       .card-image
         figure.image.is-4by3
@@ -48,7 +48,7 @@ export default {
   color: rgba(0, 0, 0, 0.4)
 
 .content
-  min-height: 200px
+  min-height: 210px
 
 p.menu-label
   display: inline-block

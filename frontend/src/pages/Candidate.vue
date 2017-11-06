@@ -1,7 +1,27 @@
 <template lang="pug">
   TemplateTN
-    .columns(v-for="(array, index) in candidates")
-      PersonCube(v-for="(item, index) in array" :person_info="item" :key="index")
+    .modal(v-if="get_person_info" @click="showMore()" :class="isClick")
+      .modal-background
+      .modal-content
+        .box
+          .media
+            .media-left
+              figure.image.is-96x96
+                img(:src="get_person_info.image")
+            .media-content
+              .content
+                p
+                  strong.title.is-4 {{get_person_info.name}}
+                  small  @{{get_person_info.e_name}}
+                .tag.is-primary 現職
+                li(v-for="i in get_person_info.position") {{i}}
+                .tag.is-primary 學歷
+                li(v-for="i in get_person_info.education") {{i}}
+                .tag.is-primary 經歷
+                li(v-for="i in get_person_info.experience") {{i}}
+      button.modal-close.is-large
+    .columns(v-for="(array, row) in candidates")
+      PersonCube(v-for="(item, col) in array" :person_info="item" :key="col" @click.native="showMore(row, col)")
 </template>
 
 <script>
@@ -19,7 +39,9 @@ export default {
     return {
       candidates: null,
       lenOfCols: Number,
-      candidatePerRow: 4
+      candidatePerRow: 4,
+      isClick: '',
+      get_person_info: null
     }
   },
   mounted () {
@@ -39,6 +61,19 @@ export default {
         returnArray.push(temparray)
       }
       this.candidates = returnArray
+    },
+    showMore (row = -1, col = -1) {
+      console.log(row, col)
+      if (this.isClick) {
+        document.querySelector('html').classList.remove('is-clipped')
+        this.isClick = ''
+      } else {
+        if (row !== -1) {
+          this.get_person_info = this.candidates[row][col]
+        }
+        document.querySelector('html').classList.add('is-clipped')
+        this.isClick = 'is-active'
+      }
     }
   }
 }
@@ -47,4 +82,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
   @import "../../node_modules/bulma/bulma.sass"
+  .tag
+    margin-top: 16px
 </style>
