@@ -8,5 +8,5 @@ server.use(middlewares);
 server.use(router);
 server.listen(5000, function () {
   console.log('JSON Server is running: localhost:5000');
-  console.log('API: http://localhost:5000/candidates')
+  console.log('API:\n\thttp://localhost:5000/candidates\n\thttp://localhost:5000/problems')
 });

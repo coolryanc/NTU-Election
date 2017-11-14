@@ -1,0 +1,53 @@
+{
+  "problems": [
+    {
+      "description": "你認為警察可以進入校園執法嗎？",
+      "vote": [
+                {"approve": true, "reason": "我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以"},
+                {"approve": false, "reason": "我覺得不行"},
+                {"approve": false, "reason": "糖糖先把我記著"},
+                {"approve": true, "reason": "有可能有好警察"},
+                {"approve": true, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "我是覺得也有壞警察"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": true, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "你認為中國好聲音可以進入校園不經過學生同意嗎？",
+      "vote": [
+                {"approve": true, "reason": "當然，賺錢最重要"},
+                {"approve": null, "reason": "對啊！經費就這樣來的"},
+                {"approve": true, "reason": "學校要有賺錢方式啊！"},
+                {"approve": true, "reason": "哈哈哈哈"},
+                {"approve": true, "reason": "不然學生又要哭窮"},
+                {"approve": false, "reason": "當然不行，中國就是討厭"},
+                {"approve": true, "reason": "哈哈哈哈"},
+                {"approve": true, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "你認為教授可以一直出國嗎？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    }
+  ],
+  "candidates": [
+    { "name": "陳銘憲", "e_name": "CHEN, MING-XIAN", "image": "/static/headImg/1.jpg" },
+    { "name": "陳弱水", "e_name": "CHEN, RUO-SHUI", "image": "/static/headImg/2.jpg" },
+    { "name": "管中閔", "e_name": "GUAN, ZHONG-MIN", "image": "/static/headImg/3.jpg" },
+    { "name": "王汎森", "e_name": "WANG, FAN-SEN", "image": "/static/headImg/4.jpg" },
+    { "name": "吳城文", "e_name": "WU, CHENG-WEN", "image": "/static/headImg/5.jpg" },
+    { "name": "吳瑞北", "e_name": "WU, RUI-BEI", "image": "/static/headImg/6.jpg" },
+    { "name": "張慶瑞", "e_name": "ZHANG, QING-RUI", "image": "/static/headImg/7.jpg" },
+    { "name": "周美吟", "e_name": "ZHOU, MEI-YIN", "image": "/static/headImg/8.jpg" }
+  ]
+}
