@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import Landing from '@/pages/Landing'
 import Candidate from '@/pages/Candidate'
 import Interview from '@/pages/Interview'
+import Vote from '@/pages/Vote'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -40,12 +41,20 @@ export default new Router({
     {
       path: '/candidate',
       name: 'candidate',
-      component: Candidate
+      component: Candidate,
+      meta: { scrollToTop: true }
     },
     {
       path: '/interview',
       name: 'interview',
-      component: Interview
+      component: Interview,
+      meta: { scrollToTop: true }
+    },
+    {
+      path: '/vote',
+      name: 'vote',
+      component: Vote,
+      meta: { scrollToTop: true }
     }
   ]
 })

@@ -1,6 +1,6 @@
 <template lang="pug">
   TemplateTN
-    .test 投票倒數
+    .reee kjckdn
 </template>
 
 <script>
@@ -8,13 +8,9 @@
 import TemplateTN from '@/templates/TemplateTN'
 
 export default {
-  name: 'Landing',
+  name: 'Vote',
   components: {
     TemplateTN
-  },
-  data () {
-    return {
-    }
   }
 }
 </script>

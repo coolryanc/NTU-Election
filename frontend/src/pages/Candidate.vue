@@ -13,7 +13,6 @@
                 .content
                   p
                     strong.title.is-4 {{get_person_info.name}}
-                    small  @{{get_person_info.e_name}}
                   .tag.is-primary 現職
                   li(v-for="i in get_person_info.position") {{i}}
                   .tag.is-primary 學歷
@@ -82,6 +81,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
+
+.modal
+  z-index: 999
 
 .fade-enter-active
   animation: show .4s 1

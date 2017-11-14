@@ -14,9 +14,12 @@
           router-link.navbar-item(to="/interview")
             img(src="https://ntusa.iconcern.tw/img/issue.png" style="height: 18px;")
             p.subtitle.is-6 &nbsp; 校務議題立場
-          a.navbar-item
+          router-link.navbar-item(to="/vote")
             img(src="https://ntusa.iconcern.tw/img/vote.png" style="height: 18px;")
             p.subtitle.is-6 &nbsp; 我要投票
+          a.navbar-item(href="https://ntusa.iconcern.tw/videoRecord.php")
+            img(src="https://ntusa.iconcern.tw/img/video.png" style="height: 18px;")
+            p.subtitle.is-6 &nbsp; 新聞影音
           a.navbar-item(href="https://ntusa.iconcern.tw/about.php")
             img(src="https://ntusa.iconcern.tw/img/iConcenr_info.png" style="height: 60px;")
     section.section
@@ -52,7 +55,7 @@ export default {
   padding: 12px 0
   position: fixed
   width: 100% !important
-  z-index: 990
+  z-index: 999
   height: 7em
 
 a

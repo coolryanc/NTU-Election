@@ -8,11 +8,9 @@
         .media
           .media-content
             p.title.is-4 {{person_info.name}}
-            p.subtitle.is-6 @{{person_info.e_name}}
         .content
           p.menu-label 現職
           .media(v-for="(p, index) in person_info.position")
-            .media-left {{index+1}}.
             .media-content {{p}}
 </template>
 
@@ -38,7 +36,7 @@ export default {
   transition: .2s
   animation: rise .5s 1
   &:hover
-    transform: translate(-3px, -3px)
+    transform: translate(-2px, -2px)
     box-shadow: 2px 2px 8px 1px rgba(black, 0.2)
 
 .is-narrow
@@ -58,7 +56,7 @@ p.menu-label
 @keyframes rise
   0%
     opacity: 0
-    transform: translateY(5px)
+    transform: translateY(-5px)
   100%
     opacity: 1
     transform: translateY(0px)
