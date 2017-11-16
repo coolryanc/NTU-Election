@@ -11,7 +11,9 @@
         .content
           p.menu-label 現職
           .media(v-for="(p, index) in person_info.position")
-            .media-content {{p}}
+            .media-content
+              p.title.is-6 {{p.split(' ')[0]}}
+              p.subtitle.is-6 {{p.split(' ')[1]}}
 </template>
 
 <script>
@@ -44,9 +46,10 @@ export default {
 
 .subtitle
   color: rgba(0, 0, 0, 0.4)
+  padding-top: 9px
 
 .content
-  min-height: 210px
+  min-height: 240px
 
 p.menu-label
   display: inline-block

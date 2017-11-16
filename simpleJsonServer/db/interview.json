@@ -1,7 +1,7 @@
 {
   "problems": [
     {
-      "description": "你認為警察可以進入校園執法嗎？",
+      "description": "您是否支持跨性別者應依心理性別認同入住校內宿舍？",
       "vote": [
                 {"approve": true, "reason": "我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以"},
                 {"approve": false, "reason": "我覺得不行"},
@@ -14,7 +14,7 @@
               ]
     },
     {
-      "description": "你認為中國好聲音可以進入校園不經過學生同意嗎？",
+      "description": "您是否支持落實改善國際生、僑（華）生學習環境之有關政策？",
       "vote": [
                 {"approve": true, "reason": "當然，賺錢最重要"},
                 {"approve": null, "reason": "對啊！經費就這樣來的"},
@@ -27,7 +27,111 @@
               ]
     },
     {
-      "description": "你認為教授可以一直出國嗎？",
+      "description": "您是否支持降低校內非典型雇用者權益並改善現有非典型雇用者勞動權益？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持校務基金化石燃料撤資？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持臺大所屬文化資產應積極維護，並在校內建立文化資產開發爭議處理機制，以妥善保護並有效利用文化資產？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持改善獎助生與僱傭型助理的勞動處境？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持廢除英檢畢業門檻，並調整大學部進階英文課程？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持改善城中校區與總區間資源上的落差？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持改善城中校區與總區間資源上的落差？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持學校應補足心輔中心人力，並改善學生輔導制度？",
+      "vote": [
+                {"approve": true, "reason": "可以啊，看看 Mike"},
+                {"approve": false, "reason": "應該多給學生機會"},
+                {"approve": false, "reason": "哈哈哈哈"},
+                {"approve": null, "reason": "不然我當教授幹嘛？"},
+                {"approve": true, "reason": "公務員就是爽"},
+                {"approve": true, "reason": "嘻嘻"},
+                {"approve": null, "reason": "哈哈哈哈"},
+                {"approve": false, "reason": "哈哈哈哈"}
+              ]
+    },
+    {
+      "description": "您是否支持取消「服務學習一、二、三」課程必修無學分制度？",
       "vote": [
                 {"approve": true, "reason": "可以啊，看看 Mike"},
                 {"approve": false, "reason": "應該多給學生機會"},

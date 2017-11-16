@@ -4,7 +4,8 @@
       .modal-background
       .modal-card
         header.modal-card-head
-          .title.modal-card-title {{questionTitle}}
+          .content
+            .title.modal-card-title {{questionTitle}}
         .modal-card-body
           .content
             article.media(v-for="(item, index) in detailReply" :key="index")
