@@ -17,9 +17,9 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/interview">
+            <a class="nav-link">
               <img src="https://ntusa.iconcern.tw/img/issue.png">&nbsp;校務議題立場
-            </router-link>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="http://140.117.68.86">

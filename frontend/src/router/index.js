@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
-import Landing from '@/pages/Landing'
 import Candidate from '@/pages/Candidate'
-import Interview from '@/pages/Interview'
-import Vote from '@/pages/Vote'
 
 Vue.use(Router)
 Vue.use(VueResource)
