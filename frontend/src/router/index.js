@@ -34,26 +34,9 @@ export default new Router({
   scrollBehavior,
   routes: [
     {
-      path: '/',
-      name: 'landing',
-      component: Landing
-    },
-    {
       path: '/candidate',
       name: 'candidate',
       component: Candidate,
-      meta: { scrollToTop: true }
-    },
-    {
-      path: '/interview',
-      name: 'interview',
-      component: Interview,
-      meta: { scrollToTop: true }
-    },
-    {
-      path: '/vote',
-      name: 'vote',
-      component: Vote,
       meta: { scrollToTop: true }
     }
   ]
