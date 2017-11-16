@@ -27,7 +27,7 @@
             .media-left
               .tag Q{{index+1}}.
             .media-content
-              p.title.is-6 {{item.description.substring(0,7)}} <br />...
+              p.title.is-6 {{item.description.substring(0,10)}} ...?
         .column.is-1.reason(v-for="(v, vIndex) in item.vote" :key="vIndex" @click="getReplyData(index, vIndex)")
           p.subtitle.is-2.center-text.redCheck(v-if="v.approve") ✓
           p.subtitle.is-2.center-text(v-if="v.approve === false") ✗
