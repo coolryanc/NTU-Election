@@ -25,7 +25,7 @@
                 p.title.is-5 {{item.name}}
           .column
         .columns(v-for="(item, index) in problems" :key="index")
-          .column.is-2
+          .column.is-2(@click="getQuestionData(index)" style="cursor: pointer;")
             .media
               .media-left
                 .tag Q{{index+1}}.
@@ -39,7 +39,8 @@
             .menu-label.is-6.center-text.neutral(v-if="v.approve === null" style="line-height:5;") 填答中
           .column
             .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
-        ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="isShow" @endShow="cancelIsShow")
+        ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
+        QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
       .is-mobile
         .box(v-for="(item, index) in problems" :key="index")
           .media
@@ -48,19 +49,21 @@
             .media-content
               p.title.is-6 {{item.description.substring(0,15)}} ...?
             .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
-        ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="isShow" @endShow="cancelIsShow")
+        ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
+        QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
 </template>
 
 <script>
 
 import TemplateTN from '@/templates/TemplateTN'
 import ReplyCube from '@/components/ReplyCube'
-
+import QuestionCube from '@/components/QuestionCube'
 export default {
   name: 'Landing',
   components: {
     TemplateTN,
-    ReplyCube
+    ReplyCube,
+    QuestionCube
   },
   data () {
     return {
@@ -68,7 +71,9 @@ export default {
       problems: null,
       getDetail: [],
       getQuestionTitle: '',
-      isShow: ''
+      replyIsShow: '',
+      questionIsShow: '',
+      getQuestion: ''
     }
   },
   mounted () {
@@ -93,11 +98,18 @@ export default {
         this.getDetail.push(tmp)
       }
       document.querySelector('html').classList.add('is-clipped')
-      this.isShow = 'is-active'
+      this.replyIsShow = 'is-active'
+    },
+    getQuestionData (index, vIndex) {
+      this.getQuestionTitle = this.problems[index].description
+      this.getQuestion = this.problems[index].detail
+      document.querySelector('html').classList.add('is-clipped')
+      this.questionIsShow = 'is-active'
     },
     cancelIsShow () {
       document.querySelector('html').classList.remove('is-clipped')
-      this.isShow = ''
+      this.replyIsShow = ''
+      this.questionIsShow = ''
     }
   }
 }

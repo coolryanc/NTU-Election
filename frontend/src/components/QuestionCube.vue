@@ -8,16 +8,10 @@
             .title.modal-card-title {{questionTitle}}
         .modal-card-body
           .content
-            article.media(v-for="(item, index) in replyReason" :key="index")
-              .media-left.is-mobile
-                figure.image.is-128x128
-                  img(:src="item.image")
+            article.media()
               .media-content
                 .content
-                  p
-                    strong.title.is-4 {{item.name}}
-                  p(v-if='item.reason') {{item.reason}}
-                  p(v-if='!item.reason') 尚未回覆
+                  p {{detailReply}}
           button.modal-close.is-large
 </template>
 
@@ -29,22 +23,13 @@ export default {
     }
   },
   props: {
-    detailReply: Array,
+    detailReply: String,
     getClass: String,
     questionTitle: String
   },
   methods: {
     endShow () {
       this.$emit('endShow')
-    }
-  },
-  computed: {
-    replyReason () {
-      // this.tmp = this.detailReply
-      for (let i = 0; i < this.detailReply.length; i++) {
-        this.detailReply[i].reason = this.detailReply[i].reason.replace(/\n/g, '<br/>')
-      }
-      return this.detailReply
     }
   }
 }
