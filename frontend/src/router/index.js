@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import Candidate from '@/pages/Candidate'
+import Interview from '@/pages/Interview'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -26,14 +27,19 @@ const scrollBehavior = (to, from, savedPosition) => {
 }
 
 export default new Router({
-  mode: 'history',
-  base: __dirname,
+  base: 'election',
   scrollBehavior,
   routes: [
     {
-      path: '/candidate',
+      path: '/',
       name: 'candidate',
       component: Candidate,
+      meta: { scrollToTop: true }
+    },
+    {
+      path: '/interview',
+      name: 'interview',
+      component: Interview,
       meta: { scrollToTop: true }
     }
   ]

@@ -1,4 +1,4 @@
-<template lang="pug">
+<template>
   <div class="bootstrap-iso menu-iso">
     <nav class="navbar navbar-toggleable-md navbar-light forumTopMenu">
       <button class="navbar-toggler navbar-toggler-right" id="menuBtn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,22 +12,22 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link" to="/candidate">
+            <router-link class="nav-link" to="/">
               <img src="https://ntusa.iconcern.tw/img/profile.png">&nbsp;候選人簡介
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
+            <router-link class="nav-link" to="/interview">
               <img src="https://ntusa.iconcern.tw/img/issue.png">&nbsp;校務議題立場
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://140.117.68.86">
+            <a class="nav-link" href="http://140.117.68.62/">
               <img src="https://ntusa.iconcern.tw/img/forum.png">&nbsp;校長，給問？
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link">
               <img src="https://ntusa.iconcern.tw/img/vote.png">&nbsp;我要投票
             </a>
           </li>

@@ -45,8 +45,8 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('http://localhost:5000/candidates').then((response) => {
-      this.candidates = response.body.candidates
+    this.$http.get('https://ntustudents.org/election-api/candidates.php').then((response) => {
+      this.candidates = JSON.parse(response.body).candidates
       this.lenOfCols = Math.ceil(this.candidates.length / this.candidatePerRow)
       this.spilitCandidateArray()
     }, (response) => {

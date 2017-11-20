@@ -9,14 +9,15 @@
         .modal-card-body
           .content
             article.media(v-for="(item, index) in detailReply" :key="index")
-              .media-left
+              .media-left.is-mobile
                 figure.image.is-128x128
                   img(:src="item.image")
               .media-content
                 .content
                   p
                     strong.title.is-4 {{item.name}}
-                  p {{item.reason}}
+                  p(v-if='item.reason') {{item.reason}}
+                  p(v-if='!item.reason') 尚未回覆
           button.modal-close.is-large
 </template>
 
@@ -43,6 +44,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
+
+@media screen and (max-width: 769px)
+  .is-mobile
+    display: none
 
 .modal
   z-index: 999
