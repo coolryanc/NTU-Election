@@ -22,6 +22,20 @@
         button.modal-close.is-large
     .columns(v-for="(array, row) in candidates")
       PersonCube(v-for="(item, col) in array" :person_info="item" :key="col" @click.native="showMore(row, col)")
+    .columns(v-if="candidates")
+      .column
+        .content
+          .title.is-6
+            | 想直接與八位候選人面對面？➜ 關於「
+            a(href="https://ntusa.iconcern.tw/candidate_talk.php") 校長，給問嗎？
+            | 」候選人座談
+    .columns(v-if="candidates")
+      .column
+        .content
+          .title.is-6
+            | 候選人對學生事務怎麼說？➜ 關於「
+            router-link(to="/interview") 校務議題立場
+            | 」
 </template>
 
 <script>

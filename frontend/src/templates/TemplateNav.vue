@@ -22,12 +22,12 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://140.117.68.62/">
+            <a class="nav-link" href="http://140.117.68.86/">
               <img src="https://ntusa.iconcern.tw/img/forum.png">&nbsp;校長，給問？
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link" @click="notFinish">
               <img src="https://ntusa.iconcern.tw/img/vote.png">&nbsp;我要投票
             </a>
           </li>
@@ -38,7 +38,7 @@
           </li>
           <li class="nav-item hidden-lg-up"><a class="nav-link" href="https://ntusa.iconcern.tw/login_info?callbackURL=URL_HERE"><img src="https://ntusa.iconcern.tw/img/setting.png">&nbsp;登入</a></li>
           <li class="nav-item hidden-md-down">
-            <a href="https://ntusa.iconcern.tw/about.php">
+            <a href="https://ntusa.iconcern.tw/about_iConcern.php">
               <img style="margin-top:-21px;height: 60px;" src="https://ntusa.iconcern.tw/img/iConcenr_info.png">
             </a>
           </li>
@@ -53,6 +53,11 @@ export default {
   name: 'TemplateNav',
   data () {
     return {
+    }
+  },
+  methods: {
+    notFinish () {
+      alert('本功能尚未開放！')
     }
   }
 }

@@ -1,18 +1,19 @@
 <template lang="pug">
   transition(name="fade")
-    .modal(@click="endShow" :class="getClass" v-if="getClass")
-      .modal-background
+    .modal(:class="getClass" v-if="getClass")
+      .modal-background(@click="endShow")
       .modal-card
         header.modal-card-head
           .content
-            .title.modal-card-title {{questionTitle}}
+            p.title.modal-card-title {{questionTitle}}
+          button.delete.is-mobile(@click="endShow" aria-label="close")
         .modal-card-body
           .content
-            article.media()
+            article.media
               .media-content
                 .content
                   p {{detailReply}}
-          button.modal-close.is-large
+          button.modal-close.is-large.is-not-mobile(@click="endShow")
 </template>
 
 <script>
@@ -39,10 +40,18 @@ export default {
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
 
-@media screen and (max-width: 769px)
+@media screen and (max-width: 768px)
+  .is-not-mobile
+    display: none
+  .is-mobile
+    display: block
+
+@media screen and (min-width: 769px)
+  .is-not-mobile
+    display: inherit
   .is-mobile
     display: none
-
+    
 .modal-card
   border-radius: 5px
 

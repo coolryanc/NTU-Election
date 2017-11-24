@@ -1,24 +1,25 @@
 <template lang="pug">
   transition(name="fade")
-    .modal(@click="endShow" :class="getClass" v-if="getClass")
-      .modal-background
+    .modal(:class="getClass" v-if="getClass")
+      .modal-background(@click="endShow")
       .modal-card
         header.modal-card-head
           .content
             .title.modal-card-title {{questionTitle}}
+          button.delete.is-mobile(@click="endShow" aria-label="close")
         .modal-card-body
           .content
             article.media(v-for="(item, index) in replyReason" :key="index")
-              .media-left.is-mobile
+              .media-left.is-not-mobile
                 figure.image.is-128x128
                   img(:src="item.image")
               .media-content
                 .content
                   p
                     strong.title.is-4 {{item.name}}
-                  p(v-if='item.reason') {{item.reason}}
+                  p(v-if='item.reason' v-html='item.reason')
                   p(v-if='!item.reason') 尚未回覆
-          button.modal-close.is-large
+          button.modal-close.is-large.is-not-mobile(@click="endShow")
 </template>
 
 <script>
@@ -26,6 +27,7 @@ export default {
   name: 'ReplyCube',
   data () {
     return {
+      tes: 'cbfhb fknc <br /> fcknfjnc'
     }
   },
   props: {
@@ -40,10 +42,9 @@ export default {
   },
   computed: {
     replyReason () {
-      // this.tmp = this.detailReply
-      for (let i = 0; i < this.detailReply.length; i++) {
-        this.detailReply[i].reason = this.detailReply[i].reason.replace(/\n/g, '<br/>')
-      }
+      this.detailReply.map(el => {
+        el.reason = el.reason.replace(/\n/g, '<br />')
+      })
       return this.detailReply
     }
   }
@@ -54,7 +55,15 @@ export default {
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
 
-@media screen and (max-width: 769px)
+@media screen and (max-width: 768px)
+  .is-not-mobile
+    display: none
+  .is-mobile
+    display: block
+
+@media screen and (min-width: 769px)
+  .is-not-mobile
+    display: inherit
   .is-mobile
     display: none
 
