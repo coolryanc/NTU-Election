@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('https://ntustudents.org/election-api/candidates.php').then((response) => {
+    this.$http.get('https://ntustudents.org/election-api/deprecated/candidates.php').then((response) => {
       this.candidates = JSON.parse(response.body).candidates
       this.lenOfCols = Math.ceil(this.candidates.length / this.candidatePerRow)
       this.spilitCandidateArray()
