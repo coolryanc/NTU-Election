@@ -81,7 +81,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('https://ntustudents.org/election-api/problems.php').then((response) => {
+    this.$http.get('https://ntustudents.org/election-api/deprecated/problems.php').then((response) => {
       this.candidates = JSON.parse(response.body).candidates
       this.problems = JSON.parse(response.body).problems
     }, (response) => {

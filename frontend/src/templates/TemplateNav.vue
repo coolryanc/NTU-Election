@@ -27,9 +27,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="notFinish">
+            <router-link class="nav-link" to='/vote'>
               <img src="https://ntusa.iconcern.tw/img/vote.png">&nbsp;我要投票
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://ntusa.iconcern.tw/videoRecord.php">
@@ -53,11 +53,6 @@ export default {
   name: 'TemplateNav',
   data () {
     return {
-    }
-  },
-  methods: {
-    notFinish () {
-      alert('本功能尚未開放！')
     }
   }
 }
