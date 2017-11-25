@@ -30,13 +30,13 @@
               .media-left
                 .tag Q{{index+1}}.
               .media-content
-                p.title.is-6 {{item.description}}
-          .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in item.vote" :key="vIndex")
-            p.reason.subtitle.is-2.center-text.redCheck(v-if="v.approve == 1" @click="getReplyData(index, vIndex)") ○
-            p.reason.subtitle.is-2.center-text(v-if="v.approve === 2" @click="getReplyData(index, vIndex)") ✗
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v.approve === 3" @click="getReplyData(index, vIndex)") △
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v.approve === 4" @click="getReplyData(index, vIndex)") □
-            .menu-label.is-6.center-text.neutral(v-if="v.approve === null" style="line-height:5;") 填答中
+                p.title.is-6 {{item.shortDescription}}
+          .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in problemResponses" :key="vIndex")
+            p.reason.subtitle.is-2.center-text.redCheck(v-if="v.response == 1" @click="getReplyData(index, vIndex)") ○
+            p.reason.subtitle.is-2.center-text(v-if="v.response === 2" @click="getReplyData(index, vIndex)") ✗
+            p.reason.subtitle.is-2.center-text.neutral(v-if="v.response === 3" @click="getReplyData(index, vIndex)") △
+            p.reason.subtitle.is-2.center-text.neutral(v-if="v.response === 4" @click="getReplyData(index, vIndex)") □
+            .menu-label.is-6.center-text.neutral(v-if="v.response === null" style="line-height:5;") 填答中
           .column
             .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
         ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
@@ -73,6 +73,7 @@ export default {
     return {
       candidates: null,
       problems: null,
+      problemResponses: null,
       getDetail: [],
       getQuestionTitle: '',
       replyIsShow: '',
@@ -81,9 +82,18 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('https://ntustudents.org/election-api/deprecated/problems.php').then((response) => {
-      this.candidates = JSON.parse(response.body).candidates
-      this.problems = JSON.parse(response.body).problems
+    this.$http.get('https://ntustudents.org/election-api/candidate.php?field=name,profileImage').then((response) => {
+      this.candidates = JSON.parse(response.body).data
+    }, (response) => {
+      console.log('Error')
+    })
+    this.$http.get('https://ntustudents.org/election-api/interview_problem.php?field=problemId,shortDescription,fullDescription').then((response) => {
+      this.problems = JSON.parse(response.body).data
+    }, (response) => {
+      console.log('Error')
+    })
+    this.$http.get('https://ntustudents.org/election-api/interview_response.php?field=candidateId,problemId,response').then((response) => {
+      this.problemResponses = JSON.parse(response.body).data
     }, (response) => {
       console.log('Error')
     })
