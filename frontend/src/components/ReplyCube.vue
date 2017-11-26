@@ -12,13 +12,13 @@
             article.media(v-for="(item, index) in replyReason" :key="index")
               .media-left.is-not-mobile
                 figure.image.is-128x128
-                  img(:src="item.image")
+                  img(:src="item.profileImage")
               .media-content
                 .content
                   p
                     strong.title.is-4 {{item.name}}
-                  p(v-if='item.reason' v-html='item.reason')
-                  p(v-if='!item.reason') 尚未回覆
+                  p(v-if='item.description' v-html='item.description')
+                  p(v-if='!item.description') 尚未回覆
           button.modal-close.is-large.is-not-mobile(@click="endShow")
 </template>
 
@@ -43,7 +43,7 @@ export default {
   computed: {
     replyReason () {
       this.detailReply.map(el => {
-        el.reason = el.reason.replace(/\n/g, '<br />')
+        el.description = el.description.replace(/\n/g, '<br />')
       })
       return this.detailReply
     }

@@ -30,13 +30,13 @@
               .media-left
                 .tag Q{{index+1}}.
               .media-content
-                p.title.is-6 {{item.description}}
+                p.title.is-6 {{problemsDescription[index].shortDescription}}
           .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in item.vote" :key="vIndex")
-            p.reason.subtitle.is-2.center-text.redCheck(v-if="v.approve == 1" @click="getReplyData(index, vIndex)") ○
-            p.reason.subtitle.is-2.center-text(v-if="v.approve === 2" @click="getReplyData(index, vIndex)") ✗
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v.approve === 3" @click="getReplyData(index, vIndex)") △
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v.approve === 4" @click="getReplyData(index, vIndex)") □
-            .menu-label.is-6.center-text.neutral(v-if="v.approve === null" style="line-height:5;") 填答中
+            p.reason.subtitle.is-2.center-text.redCheck(v-if="v == 1" @click="getReplyData(index, vIndex)") ○
+            p.reason.subtitle.is-2.center-text(v-if="v === 2" @click="getReplyData(index, vIndex)") ✗
+            p.reason.subtitle.is-2.center-text.neutral(v-if="v === 3" @click="getReplyData(index, vIndex)") △
+            p.reason.subtitle.is-2.center-text.neutral(v-if="v === 4" @click="getReplyData(index, vIndex)") □
+            .menu-label.is-6.center-text.neutral(v-if="v === 0" style="line-height:5;") 填答中
           .column
             .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
         ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
@@ -49,7 +49,7 @@
                 .media-left
                   .tag Q{{index+1}}.
                 .media-content(@click="getQuestionData(index)" style="cursor: pointer;")
-                  p.title.is-6 {{item.description}}
+                  p.title.is-6 {{problemsDescription[index].shortDescription}}
           .columns
             .column(style="overflow: hidden;")
               .button.is-primary(@click="getReplyData(index, 8)" style="float: right;") 查看所有回覆
@@ -72,7 +72,8 @@ export default {
   data () {
     return {
       candidates: null,
-      problems: null,
+      problems: [],
+      problemsDescription: [],
       getDetail: [],
       getQuestionTitle: '',
       replyIsShow: '',
@@ -81,28 +82,63 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('https://ntustudents.org/election-api/deprecated/problems.php').then((response) => {
-      this.candidates = JSON.parse(response.body).candidates
-      this.problems = JSON.parse(response.body).problems
-    }, (response) => {
-      console.log('Error')
-    })
+    let getAllData = async () => {
+      await this.getCandidates()
+      await this.getProblemsDescription()
+      await this.getStandpoint()
+    }
+    getAllData()
   },
   methods: {
-    getReplyData (index, vIndex) {
-      this.getDetail = []
-      this.getQuestionTitle = this.problems[index].description
-      if (vIndex === 8) {
-        this.problems[index].vote.map((el, i) => {
-          const tmp = Object.assign({}, this.candidates[i], el)
-          this.getDetail.push(tmp)
+    getStandpoint () {
+      this.$http.get('https://ntustudents.org/election-api/interview_response.php?field=problemId,candidateId,response').then((response) => {
+        let getData = JSON.parse(response.body).data
+        for (let i = 0; i < this.problemsDescription.length; i++) {
+          let problem = Object.assign({}, {'vote': []})
+          for (let j = 0; j < this.candidates.length; j++) {
+            problem.vote.push(0)
+          }
+          this.problems.push(problem)
+        }
+        getData.map(el => {
+          let problemId = el.problemId
+          let candidateId = el.candidateId
+          this.problems[problemId].vote[candidateId] = el.response
         })
-      } else {
-        const tmp = Object.assign({}, this.candidates[vIndex], this.problems[index].vote[vIndex])
+      }, (response) => {
+        console.log('Error')
+      })
+    },
+    getCandidates () {
+      this.$http.get('https://ntustudents.org/election-api/candidate.php?field=name,profileImage').then((response) => {
+        this.candidates = JSON.parse(response.body).data
+      }, (response) => {
+        console.log('Error')
+      })
+    },
+    getProblemsDescription () {
+      this.$http.get('https://ntustudents.org/election-api/interview_problem.php?field=shortDescription,problemId').then((response) => {
+        this.problemsDescription = JSON.parse(response.body).data
+      }, (response) => {
+        console.log('Error')
+      })
+    },
+    getReplyData (index, vIndex) {
+      console.log(index, vIndex)
+      let url = `https://ntustudents.org/election-api/interview_response.php?problemId=${index}&candidateId=${vIndex}`
+      this.$http.get(url).then((response) => {
+        let getDescription = JSON.parse(response.body).data
+        this.getDetail = []
+        this.getQuestionTitle = this.problemsDescription[index].shortDescription
+        const tmp = Object.assign({}, this.candidates[vIndex], getDescription[0])
+        console.log(tmp)
         this.getDetail.push(tmp)
-      }
-      document.querySelector('html').classList.add('is-clipped')
-      this.replyIsShow = 'is-active'
+
+        document.querySelector('html').classList.add('is-clipped')
+        this.replyIsShow = 'is-active'
+      }, (response) => {
+        console.log('Error')
+      })
     },
     getQuestionData (index, vIndex) {
       this.getQuestionTitle = this.problems[index].description
