@@ -91,49 +91,62 @@ export default {
   },
   methods: {
     getStandpoint () {
-      this.$http.get('https://ntustudents.org/election-api/interview_response.php?field=problemId,candidateId,response').then((response) => {
-        let getData = JSON.parse(response.body).data
-        for (let i = 0; i < this.problemsDescription.length; i++) {
-          let problem = Object.assign({}, {'vote': []})
-          for (let j = 0; j < this.candidates.length; j++) {
-            problem.vote.push(0)
+      return new Promise((resolve, reject) => {
+        this.$http.get('https://ntustudents.org/election-api/interview_response.php?field=problemId,candidateId,response').then((response) => {
+          let getData = JSON.parse(response.body).data
+          for (let i = 0; i < this.problemsDescription.length; i++) {
+            let problem = Object.assign({}, {'vote': []})
+            for (let j = 0; j < this.candidates.length; j++) {
+              problem.vote.push(0)
+            }
+            this.problems.push(problem)
           }
-          this.problems.push(problem)
-        }
-        getData.map(el => {
-          let problemId = el.problemId
-          let candidateId = el.candidateId
-          this.problems[problemId].vote[candidateId] = el.response
+          getData.map(el => {
+            let problemId = el.problemId
+            let candidateId = el.candidateId
+            this.problems[problemId].vote[candidateId] = el.response
+          })
+          resolve()
+        }, (response) => {
+          console.log('Error')
         })
-      }, (response) => {
-        console.log('Error')
       })
     },
     getCandidates () {
-      this.$http.get('https://ntustudents.org/election-api/candidate.php?field=name,profileImage').then((response) => {
-        this.candidates = JSON.parse(response.body).data
-      }, (response) => {
-        console.log('Error')
+      return new Promise((resolve, reject) => {
+        this.$http.get('https://ntustudents.org/election-api/candidate.php?field=name,profileImage').then((response) => {
+          this.candidates = JSON.parse(response.body).data
+          resolve()
+        }, (response) => {
+          console.log('Error')
+        })
       })
     },
     getProblemsDescription () {
-      this.$http.get('https://ntustudents.org/election-api/interview_problem.php?field=shortDescription,problemId').then((response) => {
-        this.problemsDescription = JSON.parse(response.body).data
-      }, (response) => {
-        console.log('Error')
+      return new Promise((resolve, reject) => {
+        this.$http.get('https://ntustudents.org/election-api/interview_problem.php?field=shortDescription,problemId').then((response) => {
+          this.problemsDescription = JSON.parse(response.body).data
+          resolve()
+        }, (response) => {
+          console.log('Error')
+        })
       })
     },
     getReplyData (index, vIndex) {
-      console.log(index, vIndex)
-      let url = `https://ntustudents.org/election-api/interview_response.php?problemId=${index}&candidateId=${vIndex}`
+      let url = ''
+      if (vIndex !== 8) {
+        url = `https://ntustudents.org/election-api/interview_response.php?problemId=${index}&candidateId=${vIndex}`
+      } else {
+        url = `https://ntustudents.org/election-api/interview_response.php?problemId=${index}`
+      }
       this.$http.get(url).then((response) => {
         let getDescription = JSON.parse(response.body).data
         this.getDetail = []
         this.getQuestionTitle = this.problemsDescription[index].shortDescription
-        const tmp = Object.assign({}, this.candidates[vIndex], getDescription[0])
-        console.log(tmp)
-        this.getDetail.push(tmp)
-
+        getDescription.map((el, index) => {
+          const tmp = Object.assign({}, this.candidates[el.candidateId], el)
+          this.getDetail.push(tmp)
+        })
         document.querySelector('html').classList.add('is-clipped')
         this.replyIsShow = 'is-active'
       }, (response) => {
