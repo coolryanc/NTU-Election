@@ -140,11 +140,17 @@ export default {
         console.log('Error')
       })
     },
-    getQuestionData (index, vIndex) {
-      this.getQuestionTitle = this.problems[index].description
-      this.getQuestion = this.problems[index].detail
-      document.querySelector('html').classList.add('is-clipped')
-      this.questionIsShow = 'is-active'
+    getQuestionData (index) {
+      let url = `https://ntustudents.org/election-api/interview_problem.php?index=${index}`
+      this.$http.get(url).then((response) => {
+        let question = JSON.parse(response.body).data
+        this.getQuestionTitle = this.problemsDescription[index].shortDescription
+        this.getQuestion = question[0].fullDescription
+        document.querySelector('html').classList.add('is-clipped')
+        this.questionIsShow = 'is-active'
+      }, (response) => {
+        console.log('Error')
+      })
     },
     cancelIsShow () {
       document.querySelector('html').classList.remove('is-clipped')
