@@ -3,155 +3,155 @@
     {
       "description": "您是否支持跨性別者應依心理性別認同入住校內宿舍？",
       "vote": [
-                {"approve": true, "reason": "我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以，我覺得可以"},
-                {"approve": false, "reason": "我覺得不行"},
-                {"approve": false, "reason": "糖糖先把我記著"},
-                {"approve": true, "reason": "有可能有好警察"},
-                {"approve": true, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "我是覺得也有壞警察"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": true, "reason": "哈哈哈哈"}
+                {"approve": 3, "reason": "我贊成檢討該制度，如果校内師生有共識，可以修改。"},
+                {"approve": null, "reason": ""},
+                {"approve": 4, "reason": "跨性別的態樣與可能性很多，心理性別亦非僅有男女二元且固著之區分。故應理解其個體性與主體性，而非給予刻板標籤，先一概而論，再討論其友善環境與社會支撐。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "我不認為依宿舍現狀，“跨性別者應依心理性別認同入住校內宿舍”會得到多數住宿同學的支持，因為可能會衍生許多新的問題，必須先釐清並排除，以保障所有學生的權益跟安全。在可以保障所有住宿學生的權益跟安全前提下，我支持“積極推動性別友善宿舍「法制化」，並且由校方、具有性別相關背景的教師及學生方，共同研擬討論合適的性別友善宿舍制度”。當然制度必須搭配合理的財務規劃才可能長久運作。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持落實改善國際生、僑（華）生學習環境之有關政策？",
       "vote": [
-                {"approve": true, "reason": "當然，賺錢最重要"},
-                {"approve": null, "reason": "對啊！經費就這樣來的"},
-                {"approve": true, "reason": "學校要有賺錢方式啊！"},
-                {"approve": true, "reason": "哈哈哈哈"},
-                {"approve": true, "reason": "不然學生又要哭窮"},
-                {"approve": false, "reason": "當然不行，中國就是討厭"},
-                {"approve": true, "reason": "哈哈哈哈"},
-                {"approve": true, "reason": "哈哈哈哈"}
+                {"approve": 1, "reason": "為推動國際化，以及提升臺大於全球的競爭力，應改善學習及生活環境，從基礎教育層面扎根，讓學生即早體驗國際化。因此本人支持所提及落實國際化之各項措施。然而，為了讓國際生較易適應臺灣社會環境，如同美國多數學校設立ESL課程給英語非母語者，也希望國際生能認真修習華語課程(臺大原已有配套)。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "國際化的校園應該注重並解決國際生和僑生之(接受)資訊不平等的問題，提供學習生活之友善環境與社會支撐。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "臺大既然自詡為“華人頂尖、世界一流大學”（臺大網頁所列願景），“教學精進、學術卓越、放眼國際、行政優化及友善校園“（臺大網頁所列核心價值），理應努力改善，逐漸提供僑外生與本地生相同的友善學習與生活環境。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持降低校內非典型雇用者權益並改善現有非典型雇用者勞動權益？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 3, "reason": "降低校內非典型雇用者的比例將同時降低雇用彈性，故宜視工作性質考量各層面之影響。整體而言，本人支持提供勞動者好的勞動環境與職業保障，然而此一問題也需考慮工作性質、財務與國內法規的配合，有個穩定、務實的制度。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "國際化的校園應該注重並解決國際生和僑生之(接受)資訊不平等的問題，提供學習生活之友善環境與社會支撐。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "我贊成努力改善校園内勞動者的工作環境，並依法保障其權益，逐漸達成友善校園之目標。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持校務基金化石燃料撤資？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 3, "reason": "本人同意校務基金之使用應考量永續發展與台大的社會責任。然而，對於財務投資是否該排除投資特定產業，應審慎評估目前所有之投資標的，且彙集各領域專家意見再進行整體性判斷，故需再研判。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "當石化產業外移之勢已經形成，臺大尤應善盡社會責任，將此納入校務基金分配使用之考量因素。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "我對於“臺大將校務基金投入於化石燃料或高污然、高碳排放產業”之説法並不清楚，尚無法評斷其實際影響範圍與程度。我個人認同永續發展之重要性，也鼓勵臺大師生從事研究時把永續發展列爲考量。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持臺大所屬文化資產應積極維護，並在校內建立文化資產開發爭議處理機制，以妥善保護並有效利用文化資產？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 1, "reason": "本人重視校園發展，然支持維護臺大文化資產，設立文化資產開發爭議處理機制以助於相關議題之審視，畢竟文化資產是臺大重要資產應盡可能保留。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "校方應注重文化資產的保存與活化，並建立文化資產開發爭議處理機制。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "我認同妥善保護並有效利用文化資產之精神，也認為建立爭議處理機制應屬可行（亦可將該功能納入既有機制中以降低行政負擔）。我對個案並不了解，尚難評斷"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持改善獎助生與僱傭型助理的勞動處境？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 3, "reason": "《國立臺灣大學研究獎助生施行要點》剛制定不久，應再觀察其實行效果。降低「獎助生」及「僱傭型助理」，在經費及聘任彈性上之後續影響宜再評估。然而指導教授對獎助研究生提出「幫忙遛狗、照顧小孩」等不合理要求，校方確實應予導正。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "應確實區分獎助生和僱傭型助理的工作，並改進校園內勞動處境，保障各種助理的勞動權益。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "學生在學校以學習為主要目的，兼職“勞動者”應為少數。我不理解“勞動處境”的定義。我支持改善獎助生與僱傭型助理的學習與工作環境（如果有不合理的地方），但不支持全面降低獎助生與僱傭型助理的比例。我不認爲應該有一個固定的比率，而應由實際的需求決定，否則可能讓許多有需求的學生反而因得不到獎助而受害。這是一個複雜的問題，牽涉到法律的適用性與執法的困難度，牽涉到學生的學習目標，也牽涉到師生關係的改變對教育的影響。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持廢除英檢畢業門檻，並調整大學部進階英文課程？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 2, "reason": "本人希望維持學生的基礎英文能力以確保畢業後之競爭力，但可依系所做調整(目前英文分班之考試未統一，尚不易作客觀標準)。未來修習進階英文亦可考慮由自辦測驗決定，減輕學生經濟負擔。"},
+                {"approve": null, "reason": ""},
+                {"approve": 4, "reason": "本問題與大學英文課程內容設計與教學等實質問題有關，而非僅是畢業門檻的問題。本問題的陳述，似難以是非題回答。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "以我目前認知，學校並無强烈必須設立統一的英檢畢業門檻的理由，該門檻也未有足夠證據顯現實際提升畢業生英文能力的作用。因此，我贊成强化校内英文教學，並取消英檢畢業門檻規定。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持改善城中校區與總區間資源上的落差？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 1, "reason": "整體而言，本人支持改善城中校區與總區的資源落差，包含贊成有實際需求的前提下，開設足量的校車班次供同學與教職員往返城中校區與校總區等措施。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "應改善城中校區的資源落差。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "我不清楚這個問題實際狀況，歉難回答。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
-      "description": "您是否支持改善城中校區與總區間資源上的落差？",
+      "description": "您是否支持學校體育場地應以學生使用為優先，商業租借不能影響到學生使用？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 1, "reason": "支持學校體育場地應以師生使用為優先，財務收入為次要考量。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "學校體育場地應以學生學習和使用為優先，各種租借（包括商業租借）均不能影響到學生的學習和使用。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "同意。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持學校應補足心輔中心人力，並改善學生輔導制度？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 1, "reason": "支持學校體育場地應以師生使用為優先，財務收入為次要考量。"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "您是否支持學校應補足心輔中心人力，並改善學生輔導制度？"},
+                {"approve": null, "reason": ""},
+                {"approve": 1, "reason": "同意。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     },
     {
       "description": "您是否支持取消「服務學習一、二、三」課程必修無學分制度？",
       "vote": [
-                {"approve": true, "reason": "可以啊，看看 Mike"},
-                {"approve": false, "reason": "應該多給學生機會"},
-                {"approve": false, "reason": "哈哈哈哈"},
-                {"approve": null, "reason": "不然我當教授幹嘛？"},
-                {"approve": true, "reason": "公務員就是爽"},
-                {"approve": true, "reason": "嘻嘻"},
-                {"approve": null, "reason": "哈哈哈哈"},
-                {"approve": false, "reason": "哈哈哈哈"}
+                {"approve": 3, "reason": "應避免服務課淪為為產生免費勞力之機制，然支持提供學生生活學習、培養同理心、服務校園、關懷社會之課程。可先檢視設立多年的服務學習課程是否能「落實服務學習核心價值，啟發學生愛護學校及關懷社會之心，並培養學生服務社會與公共參與能力」之初衷，再提出改進或改變措施。"},
+                {"approve": null, "reason": ""},
+                {"approve": 4, "reason": "服務學習有其教育價值，學習者與現實社會、弱勢少數社群的互動，培養情感學習、感知能力、人文素養、社會意識與多樣性的社會技能。課程內容如有嚴重落差，與是否取消課程，應非簡單的因果結論。本問題陳述，似難以是非題回答。"},
+                {"approve": null, "reason": ""},
+                {"approve": 3, "reason": "我贊成檢討該制度，如果校内師生有共識，可以修改。"},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""},
+                {"approve": null, "reason": ""}
               ]
     }
   ],
   "candidates": [
-    { "name": "陳銘憲", "e_name": "CHEN, MING-XIAN", "image": "/static/headImg/1.jpg" },
-    { "name": "陳弱水", "e_name": "CHEN, RUO-SHUI", "image": "/static/headImg/2.jpg" },
-    { "name": "管中閔", "e_name": "GUAN, ZHONG-MIN", "image": "/static/headImg/3.jpg" },
-    { "name": "王汎森", "e_name": "WANG, FAN-SEN", "image": "/static/headImg/4.jpg" },
-    { "name": "吳城文", "e_name": "WU, CHENG-WEN", "image": "/static/headImg/5.jpg" },
-    { "name": "吳瑞北", "e_name": "WU, RUI-BEI", "image": "/static/headImg/6.jpg" },
-    { "name": "張慶瑞", "e_name": "ZHANG, QING-RUI", "image": "/static/headImg/7.jpg" },
-    { "name": "周美吟", "e_name": "ZHOU, MEI-YIN", "image": "/static/headImg/8.jpg" }
+    { "name": "陳銘憲", "e_name": "CHEN, MING-XIAN", "image": "./static/headImg/1.jpg" },
+    { "name": "陳弱水", "e_name": "CHEN, RUO-SHUI", "image": "./static/headImg/2.jpg" },
+    { "name": "管中閔", "e_name": "GUAN, ZHONG-MIN", "image": "./static/headImg/3.jpg" },
+    { "name": "王汎森", "e_name": "WANG, FAN-SEN", "image": "./static/headImg/4.jpg" },
+    { "name": "吳城文", "e_name": "WU, CHENG-WEN", "image": "./static/headImg/5.jpg" },
+    { "name": "吳瑞北", "e_name": "WU, RUI-BEI", "image": "./static/headImg/6.jpg" },
+    { "name": "張慶瑞", "e_name": "ZHANG, QING-RUI", "image": "./static/headImg/7.jpg" },
+    { "name": "周美吟", "e_name": "ZHOU, MEI-YIN", "image": "./static/headImg/8.jpg" }
   ]
 }
