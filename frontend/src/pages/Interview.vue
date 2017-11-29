@@ -1,47 +1,48 @@
 <template lang="pug">
   TemplateTN
     #interview
-      .is-not-mobile
-        .columns#explain
-          .column.is-4
-            .box
+      transition(name="fade")
+        .is-not-mobile(v-if="isGetAll")
+          .columns#explain
+            .column.is-4
+              .box
+                .media
+                  .media-content
+                    .content
+                      .columns
+                        .column.explain-text
+                          span.title.is-4.redCheck ○
+                        .column.explain-text
+                          span.title.is-4.disagree ✗
+                        .column.explain-text
+                          span.title.is-4.neutral △
+                        .column.explain-text
+                          span.title.is-4.none □
+          .columns
+            .column.is-2
+            .column.is-1(v-for="(item, index) in candidates" :key="index")
               .media
+                .media-content.center-text
+                  p.title.is-5 {{item.name}}
+            .column
+          .columns(v-for="(item, index) in problems" :key="index")
+            .column.is-2(@click="getQuestionData(index)" style="cursor: pointer;")
+              .media
+                .media-left
+                  .tag Q{{index+1}}.
                 .media-content
-                  .content
-                    .columns
-                      .column.explain-text
-                        span.title.is-4.redCheck ○
-                      .column.explain-text
-                        span.title.is-4.disagree ✗
-                      .column.explain-text
-                        span.title.is-4.neutral △
-                      .column.explain-text
-                        span.title.is-4.none □
-        .columns
-          .column.is-2
-          .column.is-1(v-for="(item, index) in candidates" :key="index")
-            .media
-              .media-content.center-text
-                p.title.is-5 {{item.name}}
-          .column
-        .columns(v-for="(item, index) in problems" :key="index")
-          .column.is-2(@click="getQuestionData(index)" style="cursor: pointer;")
-            .media
-              .media-left
-                .tag Q{{index+1}}.
-              .media-content
-                p.title.is-6 {{problemsDescription[index].shortDescription}}
-          .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in item.vote" :key="vIndex")
-            p.reason.subtitle.is-2.center-text.redCheck(v-if="v == 1" @click="getReplyData(index, vIndex)") ○
-            p.reason.subtitle.is-2.center-text(v-if="v === 2" @click="getReplyData(index, vIndex)") ✗
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v === 3" @click="getReplyData(index, vIndex)") △
-            p.reason.subtitle.is-2.center-text.neutral(v-if="v === 4" @click="getReplyData(index, vIndex)") □
-            .menu-label.is-6.center-text.neutral(v-if="v === 0" style="line-height:5;") 填答中
-          .column
-            .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
-        ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
-        QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
-      .is-mobile
+                  p.title.is-6 {{problemsDescription[index].shortDescription}}
+            .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in item.vote" :key="vIndex")
+              p.reason.subtitle.is-2.center-text.redCheck(v-if="v == 1" @click="getReplyData(index, vIndex)") ○
+              p.reason.subtitle.is-2.center-text(v-if="v === 2" @click="getReplyData(index, vIndex)") ✗
+              p.reason.subtitle.is-2.center-text.neutral(v-if="v === 3" @click="getReplyData(index, vIndex)") △
+              p.reason.subtitle.is-2.center-text.neutral(v-if="v === 4" @click="getReplyData(index, vIndex)") □
+              .menu-label.is-6.center-text.neutral(v-if="v === 0" style="line-height:5;") 填答中
+            .column
+              .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
+          ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
+          QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
+      .is-mobile(v-if="isGetAll")
         .box(v-for="(item, index) in problems" :key="index")
           .columns
             .column
@@ -78,7 +79,8 @@ export default {
       getQuestionTitle: '',
       replyIsShow: '',
       questionIsShow: '',
-      getQuestion: ''
+      getQuestion: '',
+      isGetAll: false
     }
   },
   mounted () {
@@ -86,6 +88,7 @@ export default {
       await this.getCandidates()
       await this.getProblemsDescription()
       await this.getStandpoint()
+      this.isGetAll = true
     }
     getAllData()
   },
@@ -259,9 +262,8 @@ p.reason.subtitle.is-2.center-text
 .fade-leave-active
   animation: show .4s reverse
 
-#interview
-  animation: show .5s 1
-
+// #interview
+//   animation: show .5s 1
 @keyframes show
   0%
     opacity: 0.3

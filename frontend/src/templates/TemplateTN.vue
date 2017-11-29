@@ -33,7 +33,7 @@ a
   text-decoration: none
 
 .section
-  background-color: rgba(black, .015)
+  background-color: rgba(black, .025)
   padding-top: 10em
 
 .container

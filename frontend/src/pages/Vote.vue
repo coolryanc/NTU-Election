@@ -1,6 +1,6 @@
 <template lang="pug">
   TemplateTN
-    .columns(style="margin-bottom: 64px")
+    .columns(style="margin-bottom: 46px")
       .column.is-6
         .box
           .content
@@ -9,19 +9,16 @@
     #ballot.columns
       .column.ballot-contain
         .columns
-          .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
-            figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
-              img(src="/static/vote.png" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
-        .columns
-          .column(v-for='(item, index) in candidates' :key="item.e_name" style="position: relative; padding-top: 30px; padding-bottom: 30px")
-            p.title.is-6(style="text-align: center;") {{index+1}}
-        .columns
           .column(v-for='item in candidates' :key="item.image" style="position: relative;")
             figure.image.is-4by3
               img(:src="item.image" :alt="item.name")
         .columns
           .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
             p.title.is-5(v-for='c in item.name' style="text-align: center;") {{c}}
+        .columns
+          .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
+            figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
+              img(src="/static/vote.png" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
     .columns(style="margin-top: 32px;")
       .column(style="overflow: hidden;")
         .button.is-primary(style="float: right; padding: 30px 40px") 送出投票
@@ -62,8 +59,7 @@ export default {
 <style lang="sass" scoped>
 @import "../../node_modules/bulma/bulma.sass"
 @import "../sass/common"
-.vote
-  cursor: url('https://cdn4.iconfinder.com/data/icons/IMPRESSIONS/accounting/png/64/stamp.png'), auto
+
 .notSign
   opacity: 0
   user-select: none
@@ -73,16 +69,23 @@ export default {
   .ballot-contain
     .columns, .column
       background-color: white
+      transition-duration: .3s
+    .column.vote
+      &:hover
+        background-color: rgba(#222, .05)
     .columns
       .column
         border-right: solid 1px rgba(black, 0.2)
         border-bottom: solid 1px rgba(black, 0.2)
       .column:nth-child(8)
         border-right: none
-    .columns:nth-child(4)
+    .columns:nth-child(3)
       .column
         border-bottom: none
 
   box-shadow: 0 0 6px 2px rgba(black, .2)
-  // border-radius: 10px
+
+.vote
+  cursor: url('https://cdn4.iconfinder.com/data/icons/IMPRESSIONS/accounting/png/64/stamp.png'), auto
+
 </style>
