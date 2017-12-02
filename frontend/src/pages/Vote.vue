@@ -1,33 +1,64 @@
 <template lang="pug">
   TemplateTN
-    MessageBox(v-if="loginInfo" :detailLogin="loginInfo" :voteResult="isSign" @endShow="clearLoginInfo")
-    .columns(style="margin-bottom: 46px")
-      .column.is-6
-        .box
-          .content
-            p.title 「我要投票！」 - 投票規則
-            p 1. 國立臺灣大學學生皆具有本投票之投票權。
-            p 2. 每人限投票一次，確定投票後無法修改。
-            p 3. 投票時間為 2017 年 12 月 11 日 0 時至 12 月 26 日 21 時。
-      .column.is-6
-        figure.image
-          img(src="/static/VoteProcess.png")
-    #ballot.columns
-      .column.ballot-contain
+    .is-not-mobile
+      MessageBox(v-if="loginInfo" :detailLogin="loginInfo" :voteResult="isSign" @endShow="clearLoginInfo")
+      .columns(style="margin-bottom: 46px")
+        .column.is-6
+          .box
+            .content
+              p.title 「我要投票！」 - 投票規則
+              p 1. 國立臺灣大學學生皆具有本投票之投票權。
+              p 2. 每人限投票一次，確定投票後無法修改。
+              p 3. 投票時間為 2017 年 12 月 11 日 0 時至 12 月 26 日 21 時。
+        .column.is-6
+          figure.image
+            img(src="/static/VoteProcess.png")
+      #ballot.columns
+        .column.ballot-contain
+          .columns
+            .column(v-for='item in candidates' :key="item.image" style="position: relative;")
+              figure.image.is-4by3
+                img(:src="item.image" :alt="item.name")
+          .columns
+            .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
+              p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
+          .columns
+            .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
+              figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
+                img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
+      .columns(style="margin-top: 32px;")
+        .column(style="overflow: hidden;")
+          .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
+    .is-mobile
+      MessageBox(v-if="loginInfo" :detailLogin="loginInfo" :voteResult="isSign" @endShow="clearLoginInfo")
+      .columns(style="margin-bottom: 46px")
+        .column.is-6
+          .box
+            .content
+              p.title 「我要投票！」 - 投票規則
+              p 1. 國立臺灣大學學生皆具有本投票之投票權。
+              p 2. 每人限投票一次，確定投票後無法修改。
+              p 3. 投票時間為 2017 年 12 月 11 日 0 時至 12 月 26 日 21 時。
+        .column.is-6
+          figure.image
+            img(src="/static/VoteProcess.png")
+      #mobile-ballot
         .columns
-          .column(v-for='item in candidates' :key="item.image" style="position: relative;")
-            figure.image.is-4by3
-              img(:src="item.image" :alt="item.name")
-        .columns
-          .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
-            p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
-        .columns
-          .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
-            figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
-              img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
-    .columns(style="margin-top: 32px;")
-      .column(style="overflow: hidden;")
-        .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
+          .column(v-for='(item, index) in candidates')
+            .image
+              .image1
+                img(:src="item.image")
+            .name 
+              span.title.is-4 {{item.name}}
+            .vote(@click="checkSign(index)")
+              figure.image.notSign(:class="{showSign: isSign[index]}" style="width: 100%")
+                img(:src="voteImg" :alt="item.name")
+      .columns(style="margin-top: 32px;")
+        .column(style="overflow: hidden;")
+          .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
+
+
+          
 </template>
 
 <script>
@@ -84,6 +115,19 @@ export default {
 @import "../../node_modules/bulma/bulma.sass"
 @import "../sass/common"
 
+@media screen and (max-width: 768px)
+  .is-not-mobile
+    display: none
+  .is-mobile
+    display: inherit
+
+@media screen and (min-width: 769px)
+  .is-not-mobile
+    display: inherit
+  .is-mobile
+    display: none
+
+
 .notSign
   opacity: 0
   user-select: none
@@ -108,6 +152,34 @@ export default {
         border-bottom: none
 
   box-shadow: 0 0 6px 2px rgba(black, .2)
+#mobile-ballot
+  .columns, .column
+    background-color: white
+    transition-duration: .3s
+  .columns
+    .column
+      padding: 0
+      display: flex
+      flex-direction: row
+      border-right: solid 1px rgba(black, 0.2)
+      border-bottom: solid 1px rgba(black, 0.2)
+      .image
+        .image1
+          +center
+          width: 90%
+        position: relative
+        width: 30%
+        border-right: solid 1px rgba(black, 0.2)
+      .name
+        span
+          +center
+        position: relative
+        width: 50%
+        border-right: solid 1px rgba(black, 0.2)
+      .vote
+        width: 30%
+  box-shadow: 0 0 6px 2px rgba(black, .2)
+
 
 .vote
   cursor: url('https://cdn4.iconfinder.com/data/icons/IMPRESSIONS/accounting/png/64/stamp.png'), auto
