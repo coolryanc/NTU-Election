@@ -3,6 +3,8 @@
     #interview
       transition(name="fade")
         .is-not-mobile(v-if="isGetAll")
+          ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
+          QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
           .columns#explain
             .column.is-4
               .box
@@ -33,15 +35,13 @@
                 .media-content
                   p.title.is-6 {{problemsDescription[index].shortDescription}}
             .column.is-1(style="padding-top:0;" v-for="(v, vIndex) in item.vote" :key="vIndex")
-              p.reason.subtitle.is-2.center-text.redCheck(v-if="v == 1" @click="getReplyData(index, vIndex)") ○
+              p.reason.subtitle.is-2.center-text.redCheck(v-if="v === 1" @click="getReplyData(index, vIndex)") ○
               p.reason.subtitle.is-2.center-text(v-if="v === 2" @click="getReplyData(index, vIndex)") ✗
               p.reason.subtitle.is-2.center-text.neutral(v-if="v === 3" @click="getReplyData(index, vIndex)") △
               p.reason.subtitle.is-2.center-text.neutral(v-if="v === 4" @click="getReplyData(index, vIndex)") □
               .menu-label.is-6.center-text.neutral(v-if="v === 0" style="line-height:5;") 填答中
             .column
               .button.is-primary(@click="getReplyData(index, 8)") 查看所有回覆
-          ReplyCube(:detailReply="getDetail" :questionTitle="getQuestionTitle" :getClass="replyIsShow" @endShow="cancelIsShow")
-          QuestionCube(:detailReply="getQuestion" :questionTitle="getQuestionTitle" :getClass="questionIsShow" @endShow="cancelIsShow")
       .is-mobile(v-if="isGetAll")
         .box(v-for="(item, index) in problems" :key="index")
           .columns
@@ -64,7 +64,7 @@ import TemplateTN from '@/templates/TemplateTN'
 import ReplyCube from '@/components/ReplyCube'
 import QuestionCube from '@/components/QuestionCube'
 export default {
-  name: 'Landing',
+  name: 'Interview',
   components: {
     TemplateTN,
     ReplyCube,

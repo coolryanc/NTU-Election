@@ -36,12 +36,17 @@
               <img src="https://ntusa.iconcern.tw/img/video.png">&nbsp;新聞影音
             </a>
           </li>
-          <li class="nav-item hidden-lg-up"><a class="nav-link" href="https://ntusa.iconcern.tw/login_info?callbackURL=URL_HERE"><img src="https://ntusa.iconcern.tw/img/setting.png">&nbsp;登入</a></li>
+          <li class="nav-item hidden-lg-up" @click="redirect()"><a class="nav-link"><img src="https://ntusa.iconcern.tw/img/setting.png">&nbsp;登入</a></li>
           <li class="nav-item hidden-md-down">
             <a href="https://ntusa.iconcern.tw/about_iConcern.php">
               <img style="margin-top:-21px;height: 60px;" src="https://ntusa.iconcern.tw/img/iConcenr_info.png">
             </a>
           </li>
+          <li class="nav-item hidden-md-down" @click="redirect()">
+            <a class="nav-link">
+              <img src="https://ntusa.iconcern.tw/img/login_image.png" style="height: 28px;">
+            </a>
+					</li>
         </ul>
       </div>
     </nav>
@@ -53,6 +58,13 @@ export default {
   name: 'TemplateNav',
   data () {
     return {
+    }
+  },
+  methods: {
+    redirect () {
+      let URL = 'https://ntusa.iconcern.tw/login_info.php?callbackURL=https://ntustudents.org/election-api/login.php&redirect_to='
+      URL += `https://ntustudents.org/election/#${this.$route.fullPath}`
+      window.location = URL
     }
   }
 }

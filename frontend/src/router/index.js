@@ -16,13 +16,9 @@ const scrollBehavior = (to, from, savedPosition) => {
     const position = {}
     // check if any matched route config has meta that requires scrolling to top
     if (to.matched.some(m => m.meta.scrollToTop)) {
-      // cords will be used if no selector is provided,
-      // or if the selector didn't match any element.
       position.x = 0
       position.y = 0
     }
-    // if the returned position is falsy or an empty object,
-    // will retain current scroll position.
     return position
   }
 }
@@ -47,7 +43,7 @@ export default new Router({
       path: '/vote',
       name: 'vote',
       component: Vote,
-      meta: { scrollToTop: true }
+      meta: { scrollToTop: true, requiresAuth: true }
     }
   ]
 })
