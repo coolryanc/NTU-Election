@@ -8,10 +8,10 @@ const path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../election/index.html'),
-    assetsRoot: path.resolve(__dirname, '../election'),
+    index: path.resolve(__dirname, '../election-beta/index.html'),
+    assetsRoot: path.resolve(__dirname, '../election-beta'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/election/',
+    assetsPublicPath: '/election-beta/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
