@@ -11,7 +11,7 @@
             p 3. 投票時間為 2017 年 12 月 11 日 0 時至 12 月 26 日 21 時。
       .column.is-6
         figure.image
-          img(src="/static/VoteProcess.png")
+          img(:src="voteProcess")
     transition(name="fade")
       #show(v-if="isShow")
         .is-mobile
@@ -78,6 +78,7 @@ export default {
       isSign: null,
       loginInfo: null,
       voteImg: './static/vote.png',
+      voteProcess: './static/voteProcess.png',
       authenticated: false,
       userVoted: true,
       isShow: false
