@@ -1,28 +1,30 @@
 
 export default {
   user: {
-    authenticated: false
+    authenticated: false,
+    userVoted: true
   },
   setLocalStorage (iConcernNtuId, token) {
     if (typeof (Storage) !== 'undefined') {
       localStorage.setItem('iConcernNtuId', iConcernNtuId)
       localStorage.setItem('electionToken', token)
-      this.user.authenticated = true
     }
   },
   logout () {
     localStorage.removeItem('iConcernNtuId')
     localStorage.removeItem('electionToken')
     this.user.authenticated = false
+    this.user.userVoted = true
   },
   checkAuth (context) {
     return new Promise((resolve, reject) => {
       let iConcernNtuId = localStorage.getItem('iConcernNtuId')
       let token = localStorage.getItem('electionToken')
+      let self = this
       if (iConcernNtuId && token) {
-        this.user.authenticated = true
         const VOTED_URL = `https://ntustudents.org//election-api/has_voted.php?iConcernNtuId=${iConcernNtuId}&token=${token}`
         context.$http.get(VOTED_URL).then((response) => {
+          self.user.authenticated = true
           let loginInfo = Object.assign({}, JSON.parse(response.body))
           resolve(loginInfo)
         }, (response) => {

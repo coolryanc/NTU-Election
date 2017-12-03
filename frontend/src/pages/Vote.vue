@@ -12,22 +12,39 @@
       .column.is-6
         figure.image
           img(src="/static/VoteProcess.png")
-    #ballot.columns
-      .column.ballot-contain
-        .columns
-          .column(v-for='item in candidates' :key="item.image" style="position: relative;")
-            figure.image.is-4by3
-              img(:src="item.image" :alt="item.name")
-        .columns
-          .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
-            p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
-        .columns
-          .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
-            figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
-              img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
-    .columns(style="margin-top: 32px;")
-      .column(style="overflow: hidden;")
-        .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
+    transition(name="fade")
+      #show(v-if="isShow")
+        #ballot.columns(v-if="!userVoted")
+          .column.ballot-contain(v-if="authenticated")
+            .columns
+              .column(v-for='item in candidates' :key="item.image" style="position: relative;")
+                figure.image.is-4by3
+                  img(:src="item.image" :alt="item.name")
+            .columns
+              .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
+                p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
+            .columns
+              .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
+                figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
+                  img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
+        .columns(v-if="!userVoted" style="margin-top: 32px;")
+          .column(v-if="authenticated" style="overflow: hidden;")
+            .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
+        .columes(v-if="!authenticated" style="text-align: center; font-style: italic")
+          .column
+            br
+            br
+            p.subtitle.is-4 請登入後再進行投票
+        .columes(v-if="authenticated" style="text-align: center; font-style: italic")
+          .column(v-if="userVoted")
+            br
+            p.title.is-4#remind 小提醒
+            br
+            p.subtitle.is-5 親愛的同學，您已投過票，請靜待校長選舉結果！
+            p.subtitle.is-5
+              | 意向結果將於 12/28（四）公布，歡迎同學持續關注「
+              a(href="https://ntusa.iconcern.tw/candidate_talk.php") 校長，給問嗎？
+              | 」官網！
 </template>
 
 <script>
@@ -47,13 +64,19 @@ export default {
       candidates: null,
       isSign: null,
       loginInfo: null,
-      voteImg: './static/vote.png'
+      voteImg: './static/vote.png',
+      authenticated: false,
+      userVoted: true,
+      isShow: false
     }
   },
   mounted () {
     this.$http.get('https://ntustudents.org/election-api/deprecated/problems.php').then((response) => {
       this.candidates = JSON.parse(response.body).candidates
       this.isSign = Array(this.candidates.length).fill(false)
+      this.authenticated = auth.user.authenticated
+      this.userVoted = auth.user.userVoted
+      this.isShow = true
     }, (response) => {
       console.log('Error')
     })
@@ -84,11 +107,36 @@ export default {
 @import "../../node_modules/bulma/bulma.sass"
 @import "../sass/common"
 
+.fade-enter-active
+  animation: show .2s 1
+
+.fade-leave-active
+  animation: show .2s reverse
+
+@keyframes show
+  0%
+    opacity: 0.3
+    transform: translateY(-5px)
+  100%
+    opacity: 1
+    transform: translateY(0px)
+
 .notSign
   opacity: 0
   user-select: none
 .showSign
   opacity: 1
+
+#remind
+  position: relative
+  &::before
+    content: ''
+    display: inline-block
+    width: 20px
+    height: 30px
+    background-image: url('https://ntusa.iconcern.tw/img/issue.png')
+    background-size: cover
+    background-repeat: no-repeat
 #ballot
   .ballot-contain
     .columns, .column

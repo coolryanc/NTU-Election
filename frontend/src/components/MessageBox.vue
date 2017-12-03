@@ -17,7 +17,7 @@
             .content(v-else)
               br
               p(v-if="postReturnInfo") {{postReturnInfo}}
-              p(v-else) 若您圈選之候選人數少於兩人，您的選票將成為無效票。請再次確認您的投票，若無需修改請按「確認送出」。
+              p(v-else) 若您圈選之候選人數少於 <span style="color:red">兩人</span>，您的選票將成為<span style="color:red">無效票</span>。請再次確認您的投票，若無需修改請按「確認送出」。
             .content(v-if="detailLogin.data.has_voted === false" style="overflow: hidden;")
               .button.is-primary(style="float: right; margin: 10px 5px" @click="endShow") 返回選票
               .button.is-primary(v-if="!postReturnInfo" style="float: right; margin: 10px 5px" @click="submitVote") 確認送出

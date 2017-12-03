@@ -36,16 +36,21 @@
               <img src="https://ntusa.iconcern.tw/img/video.png">&nbsp;新聞影音
             </a>
           </li>
-          <li class="nav-item hidden-lg-up" @click="redirect()"><a class="nav-link"><img src="https://ntusa.iconcern.tw/img/setting.png">&nbsp;登入</a></li>
+          <li v-if="!ntuId" class="nav-item hidden-lg-up" @click="redirect()"><a class="nav-link"><img src="https://ntusa.iconcern.tw/img/setting.png">&nbsp;登入</a></li>
           <li class="nav-item hidden-md-down">
             <a href="https://ntusa.iconcern.tw/about_iConcern.php">
               <img style="margin-top:-21px;height: 60px;" src="https://ntusa.iconcern.tw/img/iConcenr_info.png">
             </a>
           </li>
-          <li class="nav-item hidden-md-down" @click="redirect()">
+          <li v-if="!ntuId" class="nav-item hidden-md-down" @click="redirect()">
             <a class="nav-link">
               <img src="https://ntusa.iconcern.tw/img/login_image.png" style="height: 28px;">
             </a>
+					</li>
+          <li v-if="ntuId" class="nav-item hidden-md-down" @click="logOut()">
+            <div class="userBtn dropDown">
+              {{ntuId.substring(0,1).toUpperCase()}}{{ntuId.substring(1,3)}}
+            </div>
 					</li>
         </ul>
       </div>
@@ -54,10 +59,30 @@
 </template>
 
 <script>
+import auth from '../auth'
+
 export default {
   name: 'TemplateNav',
   data () {
     return {
+      ntuId: ''
+    }
+  },
+  mounted () {
+    let iConcernNtuId = localStorage.getItem('iConcernNtuId')
+    let token = localStorage.getItem('electionToken')
+    if (iConcernNtuId && token) {
+      const VOTED_URL = `https://ntustudents.org//election-api/has_voted.php?iConcernNtuId=${iConcernNtuId}&token=${token}`
+      this.$http.get(VOTED_URL).then((response) => {
+        let loginInfo = JSON.parse(response.body)
+        if (loginInfo.status === 'success') {
+          this.ntuId = iConcernNtuId
+          auth.user.authenticated = true
+          auth.user.userVoted = loginInfo.data.has_voted
+        } else {
+          auth.user.authenticated = false
+        }
+      })
     }
   },
   methods: {
@@ -65,6 +90,11 @@ export default {
       let URL = 'https://ntusa.iconcern.tw/login_info.php?callbackURL=https://ntustudents.org/election-api/login.php&redirect_to='
       URL += `https://ntustudents.org/election/#${this.$route.fullPath}`
       window.location = URL
+    },
+    logOut () {
+      auth.logout()
+      this.ntuId = ''
+      window.location = `https://ntustudents.org/election/#${this.$route.fullPath}`
     }
   }
 }
@@ -72,5 +102,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
+@import "../sass/common"
+.userBtn
+  cursor: pointer
+  width: 50px
+  height: 50px
+  background-color: #7BC2A4
+  border-radius: 999px
+  line-height: 50px
+  text-align: center
+  font-weight: bold
+  color: white
+  position: relative
+  &:hover
+    &::after
+      content: '登出'
+      position: absolute
+      color: #222
+      width: 60px
+      font-size: 1.2em
+  &::before
+    content: ''
+    width: 37px
+    height: 37px
+    border: solid 3px white
+    border-radius: 999px
+    +center
 
 </style>
