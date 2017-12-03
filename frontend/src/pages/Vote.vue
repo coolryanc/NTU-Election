@@ -14,19 +14,32 @@
           img(src="/static/VoteProcess.png")
     transition(name="fade")
       #show(v-if="isShow")
-        #ballot.columns(v-if="!userVoted")
-          .column.ballot-contain(v-if="authenticated")
-            .columns
-              .column(v-for='item in candidates' :key="item.image" style="position: relative;")
-                figure.image.is-4by3
-                  img(:src="item.image" :alt="item.name")
-            .columns
-              .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
-                p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
-            .columns
-              .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
-                figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
-                  img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
+        .is-mobile
+          #mobile-ballot(v-if="!userVoted")
+            .columns(v-if="authenticated")
+              .column(v-for='(item, index) in candidates')
+                .image
+                  .image1
+                    img(:src="item.image")
+                .name
+                  span.title.is-4 {{item.name}}
+                .vote(@click="checkSign(index)" style="padding: 30px; position: relative")
+                  figure.notSign(:class="{showSign: isSign[index]}" style="width: 100%;")
+                    img(:src="voteImg" :alt="item.name")
+        .is-not-mobile
+          #ballot.columns(v-if="!userVoted")
+            .column.ballot-contain(v-if="authenticated")
+              .columns
+                .column(v-for='item in candidates' :key="item.image" style="position: relative;")
+                  figure.image.is-4by3
+                    img(:src="item.image" :alt="item.name")
+              .columns
+                .column(v-for='item in candidates' style="position: relative; padding-top: 50px; padding-bottom: 50px")
+                  p.title.is-4(v-for='c in item.name' style="text-align: center;") {{c}}
+              .columns
+                .column.vote(v-for='(item, c_index) in candidates' @click="checkSign(c_index)" :key="item.name" style="position: relative; padding-top: 60px; padding-bottom: 60px")
+                  figure.image.is-1by1.notSign(:class="{showSign: isSign[c_index]}")
+                    img(:src="voteImg" :alt="item.name" style="width: 60%; height: 60%; left: 50%; transform: translate(-50%, 30%)")
         .columns(v-if="!userVoted" style="margin-top: 32px;")
           .column(v-if="authenticated" style="overflow: hidden;")
             .button.is-primary(@click="submit()" style="float: right; padding: 30px 40px") 送出投票
@@ -121,6 +134,18 @@ export default {
     opacity: 1
     transform: translateY(0px)
 
+@media screen and (max-width: 768px)
+  .is-not-mobile
+    display: none
+  .is-mobile
+    display: inherit
+
+@media screen and (min-width: 769px)
+  .is-not-mobile
+    display: inherit
+  .is-mobile
+    display: none
+
 .notSign
   opacity: 0
   user-select: none
@@ -154,8 +179,36 @@ export default {
     .columns:nth-child(3)
       .column
         border-bottom: none
-
   box-shadow: 0 0 6px 2px rgba(black, .2)
+
+#mobile-ballot
+  .columns, .column
+    background-color: white
+    transition-duration: .3s
+  .columns
+    box-shadow: 0 0 6px 2px rgba(black, .2)
+    .column
+      padding: 0
+      display: flex
+      flex-direction: row
+      border-bottom: solid 1px rgba(black, 0.2)
+      .image
+        .image1
+          +center
+          width: 90%
+        position: relative
+        width: 30%
+        border-right: solid 1px rgba(black, 0.2)
+        box-sizing: border-box
+      .name
+        span
+          +center
+        position: relative
+        width: 40%
+        border-right: solid 1px rgba(black, 0.2)
+        box-sizing: border-box
+      .vote
+        width: 30%
 
 .vote
   cursor: url('https://cdn4.iconfinder.com/data/icons/IMPRESSIONS/accounting/png/64/stamp.png'), auto
