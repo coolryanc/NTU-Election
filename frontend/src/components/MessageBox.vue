@@ -13,7 +13,7 @@
                 p.title.is-4 小提醒
             .content(v-if="detailLogin.data.has_voted === true")
               br
-              p 親愛的同學，您已投過票，請靜待校長選舉結果！
+              p 親愛的同學，您已投過票，請靜待校長意向投票結果 !
             .content(v-else)
               br
               p(v-if="postReturnInfo") {{postReturnInfo}}
