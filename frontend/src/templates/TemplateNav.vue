@@ -92,9 +92,14 @@ export default {
       window.location = URL
     },
     logOut () {
-      auth.logout()
-      this.ntuId = ''
-      window.location = `https://ntustudents.org/election/#${this.$route.fullPath}`
+      let self = this
+      let logootPromise = auth.logout(this)
+      logootPromise.then(() => {
+        localStorage.removeItem('iConcernNtuId')
+        localStorage.removeItem('electionToken')
+        self.ntuId = ''
+        window.location = `https://ntustudents.org/election/#${self.$route.fullPath}`
+      })
     }
   }
 }

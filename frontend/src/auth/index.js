@@ -10,11 +10,25 @@ export default {
       localStorage.setItem('electionToken', token)
     }
   },
-  logout () {
-    localStorage.removeItem('iConcernNtuId')
-    localStorage.removeItem('electionToken')
-    this.user.authenticated = false
-    this.user.userVoted = true
+  logout (context) {
+    return new Promise((resolve, reject) => {
+      let iConcernNtuId = localStorage.getItem('iConcernNtuId')
+      let token = localStorage.getItem('electionToken')
+      this.user.authenticated = false
+      this.user.userVoted = true
+      if (iConcernNtuId && token) {
+        const POST_URL = 'https://ntustudents.org/election-api/logout.php'
+        let user = {
+          'iConcernNtuId': iConcernNtuId,
+          'token': token
+        }
+        context.$http.post(POST_URL, user).then((response) => {
+          resolve()
+        }, (response) => {
+          resolve()
+        })
+      }
+    })
   },
   checkAuth (context) {
     return new Promise((resolve, reject) => {
@@ -50,7 +64,7 @@ export default {
       let iConcernNtuId = localStorage.getItem('iConcernNtuId')
       let token = localStorage.getItem('electionToken')
       if (iConcernNtuId && token) {
-        const POST_URL = 'https://ntustudents.org//election-api/vote.php'
+        const POST_URL = 'https://ntustudents.org/election-api/vote.php'
         let user = {
           'iConcernNtuId': iConcernNtuId,
           'token': token,
@@ -58,7 +72,7 @@ export default {
         }
         let postData = Object.assign({}, user)
         context.$http.post(POST_URL, postData).then((response) => {
-          resolve('投票成功!謝謝您的參與。')
+          resolve(true)
         }, (response) => {
           resolve('投票失敗，有可能是認証過期，請再重新登入。')
         })

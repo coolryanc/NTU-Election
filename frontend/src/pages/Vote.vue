@@ -1,15 +1,15 @@
 <template lang="pug">
   TemplateTN
-    MessageBox(v-if="loginInfo" :detailLogin="loginInfo" :voteResult="isSign" @endShow="clearLoginInfo")
+    MessageBox(v-if="loginInfo" :detailLogin="loginInfo" :voteResult="isSign" @endShow="clearLoginInfo" @endVote="voteFinish")
     .columns(style="margin-bottom: 46px")
       .column.is-6
         .box
           .content
-            p.title 「我要投票！」 - 投票規則
+            p.title 投票規則
             p 1. 國立臺灣大學學生皆具有本意向投票之投票權。
             p 2. 每人限投票一次，確定投票後無法修改。
-            p 3. <span style="color: red">每張選票可圈選支持二到八位候選人</span> (需兩位以上，僅圈選一位將成為無效票)
-            p 4. 投票時間為 2017 年 12 月 11 日 0:00 至 12 月 21 日 23:59。
+            p 3. <span style="color: red">每張選票可圈選支持二到八位候選人</span>（須圈選兩位以上候選人，僅圈選一位將成為無效票）
+            p 4. 投票時間為 2017 年 12 月 11 日 00：00 至 12 月 21 日 23：59。
       .column.is-6
         figure.image
           img(:src="voteProcess")
@@ -49,16 +49,12 @@
             br
             br
             p.subtitle.is-4 請登入後再進行投票
-        .columes(v-if="authenticated" style="text-align: center; font-style: italic")
+        .columes(v-if="authenticated" style="text-align: center;")
           .column(v-if="userVoted")
             br
             p.title.is-4#remind 小提醒
             br
-            p.subtitle.is-5 親愛的同學，您已投過票，請靜待校長選舉結果！
-            p.subtitle.is-5
-              | 意向結果將於 12/28（四）公布，歡迎同學持續關注「
-              a(href="https://ntusa.iconcern.tw/candidate_talk.php") 校長，給問嗎？
-              | 」官網！
+            p.subtitle.is-5 親愛的同學，您已完成投票，請靜待校長意向投票結果！
 </template>
 
 <script>
@@ -111,6 +107,10 @@ export default {
     },
     clearLoginInfo () {
       this.loginInfo = null
+      this.$forceUpdate()
+    },
+    voteFinish () {
+      this.userVoted = true
       this.$forceUpdate()
     }
   }

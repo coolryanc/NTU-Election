@@ -26,6 +26,7 @@ export default {
         this.iConcernNtuId = iConcernNtuId
         this.token = token
         auth.setLocalStorage(iConcernNtuId, token)
+        window.history.replaceState({}, {}, '/election' + this.$route.path)
       }
     }
   }
